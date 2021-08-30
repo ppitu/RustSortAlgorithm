@@ -1,45 +1,9 @@
+mod sort;
+
 use rand::{distributions::Uniform, Rng};
 use std::time::{Instant};
 
-fn swap(arr: &mut Vec<usize>, first_pos: usize, second_pos: usize) {
-    let temp = arr[first_pos];
-    arr[first_pos] = arr[second_pos];
-    arr[second_pos] = temp;
-}
-
-fn partition(arr: &mut Vec<usize>, start: usize, end: usize) -> i32 {
-    let pivot = arr[end];
-
-    let mut index = start;
-
-    let mut i = start;
-
-    while i < end {
-        if arr[i] < pivot {
-            swap(arr, i, index);
-            index += 1;
-        }
-
-        i+=1;
-    }
-
-    swap(arr, index, end);
-
-    return index as i32;
-}
-
-fn quick_sort(arr: &mut Vec<usize>, start: usize, end: usize) {
-    if start >= end {
-        return;
-    }
-
-    let pivot = partition(arr, start, end);
-
-    quick_sort(arr, start, (pivot - 1) as usize);
-    quick_sort(arr, (pivot + 1) as usize, end);
-
-}
-
+/*
 fn bubble_sort(arr: &mut Vec<u32>) {
     for _i in 0..arr.len() {
         for j in 0..arr.len() - 1 {
@@ -48,7 +12,7 @@ fn bubble_sort(arr: &mut Vec<u32>) {
             }
         }
     }
-}
+}*/
 
 fn main() {
     let mut rng = rand::thread_rng();
@@ -65,7 +29,7 @@ fn main() {
 
     println!("{}", size);
 
-    quick_sort(&mut vec, 0, size);
+    sort::quick_sort::quick_sort(&mut vec, 0, size);
 
     let end = now.elapsed().as_secs();
 
