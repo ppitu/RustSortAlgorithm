@@ -1,5 +1,5 @@
 
-fn partition(arr: &mut Vec<usize>, start: usize, end: usize) -> usize {
+fn partition<T: PartialOrd + Copy>(arr: &mut Vec<T>, start: usize, end: usize) -> usize {
     let pivot = arr[end];
 
     let mut index = start;
@@ -19,7 +19,7 @@ fn partition(arr: &mut Vec<usize>, start: usize, end: usize) -> usize {
     return index;
 }
 
-pub fn quick_sort(arr: &mut Vec<usize>, start: usize, end: usize) {
+pub fn quick_sort<T: PartialOrd + Copy>(arr: &mut Vec<T>, start: usize, end: usize) {
     if start >= end {
         return;
     }
