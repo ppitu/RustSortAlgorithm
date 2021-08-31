@@ -16,9 +16,9 @@ fn bubble_sort(arr: &mut Vec<u32>) {
 
 fn main() {
     let mut rng = rand::thread_rng();
-    let range = Uniform::new(0, 1000000);
+    let range = Uniform::new(0, 100000000);
     
-    let mut vec: Vec<usize> = (0..200).map(|_| rng.sample(&range)).collect();
+    let mut vec: Vec<usize> = (0..2000).map(|_| rng.sample(&range)).collect();
 
     println!("{:?}", vec);
 

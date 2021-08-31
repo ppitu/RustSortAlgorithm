@@ -1,10 +1,5 @@
-fn swap(arr: &mut Vec<usize>, first_pos: usize, second_pos: usize) {
-    let temp = arr[first_pos];
-    arr[first_pos] = arr[second_pos];
-    arr[second_pos] = temp;
-}
 
-fn partition(arr: &mut Vec<usize>, start: usize, end: usize) -> i32 {
+fn partition(arr: &mut Vec<usize>, start: usize, end: usize) -> usize {
     let pivot = arr[end];
 
     let mut index = start;
@@ -13,16 +8,15 @@ fn partition(arr: &mut Vec<usize>, start: usize, end: usize) -> i32 {
 
     while i < end {
         if arr[i] < pivot {
-            swap(arr, i, index);
+            arr.swap(i, index);
             index += 1;
         }
 
         i+=1;
     }
+    arr.swap(index, end);
 
-    swap(arr, index, end);
-
-    return index as i32;
+    return index;
 }
 
 pub fn quick_sort(arr: &mut Vec<usize>, start: usize, end: usize) {
@@ -32,7 +26,11 @@ pub fn quick_sort(arr: &mut Vec<usize>, start: usize, end: usize) {
 
     let pivot = partition(arr, start, end);
 
-    quick_sort(arr, start, (pivot - 1) as usize);
-    quick_sort(arr, (pivot + 1) as usize, end);
+    if pivot as isize - 1 < 0 || pivot + 1 > arr.len(){
+        return;
+    }
+
+    quick_sort(arr, start, pivot - 1);
+    quick_sort(arr, pivot + 1, end);
 
 }
