@@ -18,7 +18,8 @@ fn main() {
 
     println!("{}", size);
 
-    sort::quick_sort::quick_sort(&mut vec, 0, size);
+    //sort::quick_sort::quick_sort(&mut vec, 0, size);
+    sort::bubble_sort::bubble_sort(&mut vec);
 
     let end = now.elapsed().as_secs();
 

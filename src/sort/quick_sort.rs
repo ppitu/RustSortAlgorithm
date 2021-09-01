@@ -1,4 +1,3 @@
-
 fn partition<T: PartialOrd + Copy>(arr: &mut Vec<T>, start: usize, end: usize) -> usize {
     let pivot = arr[end];
 
@@ -16,7 +15,7 @@ fn partition<T: PartialOrd + Copy>(arr: &mut Vec<T>, start: usize, end: usize) -
     }
     arr.swap(index, end);
 
-    return index;
+    index
 }
 
 pub fn quick_sort<T: PartialOrd + Copy>(arr: &mut Vec<T>, start: usize, end: usize) {
