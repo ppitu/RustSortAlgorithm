@@ -26,11 +26,12 @@ pub fn quick_sort<T: PartialOrd + Copy>(arr: &mut Vec<T>, start: usize, end: usi
 
     let pivot = partition(arr, start, end);
 
-    if pivot as isize - 1 < 0 || pivot + 1 > arr.len(){
-        return;
+    if pivot > 0 {
+        quick_sort(arr, start, pivot - 1);
     }
 
-    quick_sort(arr, start, pivot - 1);
-    quick_sort(arr, pivot + 1, end);
+    if pivot + 1 < arr.len() {
+        quick_sort(arr, pivot + 1, end);
+    }
 
 }

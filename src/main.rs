@@ -5,9 +5,9 @@ use std::time::{Instant};
 
 fn main() {
     let mut rng = rand::thread_rng();
-    let range = Uniform::new(0, 10000);
+    let range = Uniform::new(0, 100);
     
-    let mut vec: Vec<usize> = (0..20000).map(|_| rng.sample(&range)).collect();
+    let mut vec: Vec<usize> = (0..200).map(|_| rng.sample(&range)).collect();
 
     println!("{:?}", vec);
 
